@@ -253,7 +253,8 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 			
 			fragments[j] = fragment.toString();
 			System.out.println(fragments[j]);
-			fragment.setLength(0);
+			fragment.setLength(0); // khali kortesi
+			// empty na korle oita prottek fragment e extra add hbe
 		}
 
 	}
