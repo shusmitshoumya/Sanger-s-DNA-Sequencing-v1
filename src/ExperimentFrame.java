@@ -236,15 +236,24 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 					fragment.append('A');
 					break;
 				}
-				else if(dnaSequence.charAt(i) == 'A')
+				else if(dnaSequence.charAt(i) == 'T') {
+					fragment.append('A');
+				}
+				else if(dnaSequence.charAt(i) == 'A') {
 					fragment.append('T');
-				else if(dnaSequence.charAt(i) == 'G')
+				}
+				else if(dnaSequence.charAt(i) == 'G') {
 					fragment.append('C');
+				}
+				else if(dnaSequence.charAt(i) == 'C') {
+					fragment.append('G');
+				}
 				
 			}
+			
 			fragments[j] = fragment.toString();
-			System.out.println(fragment.toString());
-
+			System.out.println(fragments[j]);
+			fragment.setLength(0);
 		}
 
 	}
