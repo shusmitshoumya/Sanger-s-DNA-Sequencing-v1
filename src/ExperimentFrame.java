@@ -42,20 +42,20 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		inputText.setText("Enter The DNA Sequence:");
 		inputText.setSize(100, 100);
 		inputText.setFont(new Font("Arial", Font.BOLD, 18));
-		inputText.setForeground(new Color(238, 238, 238));
+		inputText.setForeground(Color.GREEN);
 
 		// Input Field
 		input = new JTextField(100); // column set korsi
 		((AbstractDocument) input.getDocument()).setDocumentFilter(new ATGCDocumentFilter());
 		input.setPreferredSize(new Dimension(700, 30));
 		input.setFont(new Font("Arial", Font.BOLD, 20));
-		input.setBackground(Color.white);
-		input.setForeground(new Color(59, 30, 84));
+		input.setBackground(new Color(38, 35, 41));
+		input.setForeground(Color.GREEN);
 
 		// Enter Sequence Button
 		enterSeq = new JButton("ENTER");
 		enterSeq.setFocusable(false);
-		enterSeq.setBackground(new Color(51, 255, 133));
+		enterSeq.setBackground(Color.GREEN);
 		enterSeq.setForeground(new Color(18, 33, 24));
 		enterSeq.addActionListener(this);
 
@@ -148,9 +148,9 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		JLabel testTube4 = new JLabel(tube04);
 
 		title = new JLabel();
-		title.setText("Template DNA Sequence: ");
+		title.setText("                                      Template: ");
 		title.setFont(new Font("Arial", Font.BOLD, 18));
-		title.setForeground(Color.white);
+		title.setForeground(Color.GREEN);
 
 		templateDNAlabel = new JLabel();
 		templateDNAlabel.setText("");
