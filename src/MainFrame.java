@@ -28,7 +28,7 @@ public class MainFrame extends JFrame implements ActionListener{
         base.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Window Size
-        base.setSize(800, 1000);
+        base.setSize(1850, 1080);
         base.setResizable(false);;
 
         // Title
@@ -39,7 +39,7 @@ public class MainFrame extends JFrame implements ActionListener{
         base.setIconImage(image.getImage());
 
         // Background
-        base.getContentPane().setBackground(Color.BLACK);
+        base.getContentPane().setBackground(new Color(7, 1, 66));
 
         // Set GridBagLayout for centering
         base.setLayout(new GridBagLayout());
