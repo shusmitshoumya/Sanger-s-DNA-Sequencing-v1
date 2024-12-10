@@ -39,7 +39,7 @@ public class MainFrame extends JFrame implements ActionListener{
         base.setIconImage(image.getImage());
 
         // Background
-        base.getContentPane().setBackground(new Color(7, 1, 66));
+        base.getContentPane().setBackground(new Color(27, 27, 51));
 
         // Set GridBagLayout for centering
         base.setLayout(new GridBagLayout());
@@ -54,7 +54,7 @@ public class MainFrame extends JFrame implements ActionListener{
         title = new JLabel("DNA Sequencing");
         title.setFont(sansSerifBig);
         title.setForeground(Color.white);
-        title.setBackground(Color.BLACK);
+        title.setBackground(new Color(27, 27, 51));
         title.setOpaque(true);
         title.setHorizontalAlignment(SwingConstants.CENTER);
         title.setVerticalAlignment(SwingConstants.CENTER);

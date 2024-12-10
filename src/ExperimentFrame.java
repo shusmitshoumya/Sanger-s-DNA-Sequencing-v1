@@ -34,7 +34,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setIconImage(iconImage);
 		frame.setTitle("Experiment Window");
-		frame.getContentPane().setBackground(new Color(7, 1, 66));
+		frame.getContentPane().setBackground(new Color(3, 2, 54));
 		frame.setLayout(new BorderLayout());
 
 		// Input Text er jonne
@@ -74,9 +74,9 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		JPanel midPanel = new JPanel();
 		JPanel bottomPanel = new JPanel();
 
-		topPanel.setBackground(new Color(7, 1, 66));
-		midPanel.setBackground(new Color(7, 1, 66));
-		bottomPanel.setBackground(new Color(7, 1, 66));
+		topPanel.setBackground(new Color(27, 27, 51));
+		midPanel.setBackground(new Color(27, 27, 51));
+		bottomPanel.setBackground(new Color(27, 27, 51));
 
 		topPanel.setPreferredSize(new Dimension(1920, 300));
 		midPanel.setPreferredSize(new Dimension(1920, 200));
@@ -87,7 +87,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 // PANEL A //
 		panelA = new JPanel();
 		panelA.setFont(new Font("Arial", Font.BOLD, 20));
-		panelA.setBackground(new Color(39, 11, 61));
+		panelA.setBackground(new Color(38, 35, 41));
 		panelA.setLayout(new BoxLayout(panelA, BoxLayout.Y_AXIS));
 		labelA = new JLabel("      ddATP Fragments");
 		labelA.setForeground(new Color(221, 130, 224));
@@ -96,7 +96,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		panelA.setPreferredSize(new Dimension(100, 100));
 // PANEL T //
 		panelT = new JPanel();
-		panelT.setBackground(new Color(39, 11, 61));
+		panelT.setBackground(new Color(38, 35, 41));
 		panelT.setLayout(new BoxLayout(panelT, BoxLayout.Y_AXIS));
 		labelT = new JLabel("   ddTTP Fragments");
 		labelT.setForeground(new Color(123, 203, 237));
@@ -105,7 +105,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		panelT.setPreferredSize(new Dimension(100, 100));
 // PANEL G //
 		panelG = new JPanel();
-		panelG.setBackground(new Color(39, 11, 61));
+		panelG.setBackground(new Color(38, 35, 41));
 		panelG.setLayout(new BoxLayout(panelG, BoxLayout.Y_AXIS));
 		labelG = new JLabel("   ddGTP Fragments");
 		labelG.setForeground(new Color(214, 21, 99));
@@ -114,7 +114,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		panelG.setPreferredSize(new Dimension(100, 100));
 // PANEL C //
 		panelC = new JPanel();
-		panelC.setBackground(new Color(39, 11, 61));
+		panelC.setBackground(new Color(38, 35, 41));
 		panelC.setLayout(new BoxLayout(panelC, BoxLayout.Y_AXIS));
 		labelC = new JLabel("  ddCTP Fragments");
 		labelC.setForeground(new Color(210, 255, 61));
