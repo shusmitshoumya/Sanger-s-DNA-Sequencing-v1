@@ -10,6 +10,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 
 	String templateDNA;
 	JButton enterSeq;
+	JButton showGraph;
 	JTextField input;
 	JLabel templateDNAlabel;
 	JLabel title;
@@ -18,7 +19,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 	JPanel panelT;
 	JPanel panelG;
 	JPanel panelC;
-	
+
 	JLabel labelA;
 	JLabel labelT;
 	JLabel labelG;
@@ -30,7 +31,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 
 		JFrame frame = new JFrame();
 		frame.setSize(1850, 1080);
-		//frame.setResizable(false);
+		// frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setIconImage(iconImage);
 		frame.setTitle("Experiment Window");
@@ -68,6 +69,12 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 				enterSeq.doClick(); // Simulate a button click
 			}
 		});
+
+		showGraph = new JButton("Show Graph");
+		showGraph.setFocusable(false);
+		showGraph.setBackground(Color.GREEN);
+		showGraph.setForeground(new Color(18, 33, 24));
+		showGraph.addActionListener(this);
 
 		// panels
 		JPanel topPanel = new JPanel();
@@ -156,6 +163,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		templateDNAlabel.setText("");
 		templateDNAlabel.setFont(new Font("Arial", Font.BOLD, 18));
 		templateDNAlabel.setForeground(Color.white);
+		
 
 		topPanel.add(inputText);
 		topPanel.add(input);
@@ -172,6 +180,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		midPanel.add(testTube2);
 		midPanel.add(testTube3);
 		midPanel.add(testTube4);
+		midPanel.add(showGraph);
 
 		frame.add(topPanel, BorderLayout.NORTH);
 		frame.add(midPanel, BorderLayout.CENTER);
@@ -186,16 +195,16 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		if (e.getSource() == enterSeq) {
 
 			templateDNA = input.getText();
-			
+
 			panelA.removeAll();
-	        panelT.removeAll();
-	        panelG.removeAll();
-	        panelC.removeAll();
-	        
-	        panelA.add(labelA);
-	        panelT.add(labelT);
-	        panelG.add(labelG);
-	        panelC.add(labelC);
+			panelT.removeAll();
+			panelG.removeAll();
+			panelC.removeAll();
+
+			panelA.add(labelA);
+			panelT.add(labelT);
+			panelG.add(labelG);
+			panelC.add(labelC);
 
 			String coloredDNA = coloringFragments(templateDNA);
 
@@ -222,7 +231,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 			 * Fragments of ddTTP added to panelT
 			 */
 			String[] T = fragmentsT(templateDNA);
-			
+
 			for (String option : T) {
 
 				String colored = coloringFragments(option);
@@ -232,7 +241,6 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 				// fragmentsLabel.setForeground(Color.black);
 
 				panelT.add(fragmentsLabel);
-				
 
 			}
 
@@ -256,7 +264,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 
 			/*
 			 * Fragments of ddGTP added to panelT
-			 */ 
+			 */
 			String[] C = fragmentsC(templateDNA);
 			int numberC = 1;
 			for (String option : C) {
@@ -271,20 +279,35 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 				numberC++;
 
 			}
-			
+
 			panelA.revalidate();
-	        panelT.revalidate();
-	        panelG.revalidate();
-	        panelC.revalidate();
+			panelT.revalidate();
+			panelG.revalidate();
+			panelC.revalidate();
 
-	        panelA.repaint();
-	        panelT.repaint();
-	        panelG.repaint();
-	        panelC.repaint();
+			panelA.repaint();
+			panelT.repaint();
+			panelG.repaint();
+			panelC.repaint();
 
+		} else if (e.getSource() == showGraph) {
+//			System.out.println("Clicked ShowGraph");
+			try {
+			String[] ddATP = fragmentsA(templateDNA);
+	        String[] ddTTP = fragmentsT(templateDNA);
+	        String[] ddGTP = fragmentsG(templateDNA);
+	        String[] ddCTP = fragmentsC(templateDNA);
+			GraphWindow graph = new GraphWindow(ddATP, ddTTP, ddGTP, ddCTP);
+			graph.predictedSeq(templateDNA);
+			}
+			catch(NullPointerException exc) {
+				System.out.println("DNA Sequence Empty!!!");
+			}
+			
 		}
 
 	}
+	public int A = 0;
 
 	public String coloringFragments(String dnaSequence) {
 		StringBuilder coloredDNA = new StringBuilder("<html><span style='color: white;'></span>");
@@ -469,7 +492,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		return fragments;
 
 	}
-	
+
 	public String[] fragmentsC(String dnaSequence) {
 		int n = 0;
 
@@ -519,5 +542,6 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		return fragments;
 
 	}
+	
 
 }
