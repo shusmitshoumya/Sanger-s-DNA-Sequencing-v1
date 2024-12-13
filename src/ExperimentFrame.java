@@ -48,7 +48,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		inputText.setForeground(Color.GREEN);
 
 		// Input Field
-		input = new JTextField(30); // column set korsi
+		input = new JTextField(35); // column set korsi
 		((AbstractDocument) input.getDocument()).setDocumentFilter(new ATGCDocumentFilter());
 		input.setPreferredSize(new Dimension(700, 30));
 		input.setFont(new Font("Arial", Font.BOLD, 20));
