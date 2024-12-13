@@ -24,7 +24,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 	JLabel labelT;
 	JLabel labelG;
 	JLabel labelC;
-
+	
 	ExperimentFrame() {
 		ImageIcon icon = new ImageIcon("icon.png");
 		Image iconImage = icon.getImage();
