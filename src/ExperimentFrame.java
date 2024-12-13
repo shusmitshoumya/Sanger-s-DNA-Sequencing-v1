@@ -31,7 +31,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 
 		JFrame frame = new JFrame();
 		frame.setSize(950, 1000);
-		// frame.setResizable(false);
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setIconImage(iconImage);
 		frame.setTitle("Experiment Window");
