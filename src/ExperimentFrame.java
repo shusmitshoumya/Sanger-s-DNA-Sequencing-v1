@@ -9,6 +9,8 @@ import javax.swing.text.*;
 public class ExperimentFrame extends JFrame implements ActionListener {
 
 	String templateDNA;
+	String predictedS;
+	
 	JButton enterSeq;
 	JButton showGraph;
 	JTextField input;
@@ -30,7 +32,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		Image iconImage = icon.getImage();
 
 		JFrame frame = new JFrame();
-		frame.setSize(1850, 1080);
+		frame.setSize(950, 1000);
 		// frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setIconImage(iconImage);
@@ -46,7 +48,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		inputText.setForeground(Color.GREEN);
 
 		// Input Field
-		input = new JTextField(100); // column set korsi
+		input = new JTextField(30); // column set korsi
 		((AbstractDocument) input.getDocument()).setDocumentFilter(new ATGCDocumentFilter());
 		input.setPreferredSize(new Dimension(700, 30));
 		input.setFont(new Font("Arial", Font.BOLD, 20));
@@ -85,9 +87,9 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		midPanel.setBackground(new Color(27, 27, 51));
 		bottomPanel.setBackground(new Color(27, 27, 51));
 
-		topPanel.setPreferredSize(new Dimension(1920, 300));
-		midPanel.setPreferredSize(new Dimension(1920, 200));
-		bottomPanel.setPreferredSize(new Dimension(1920, 500));
+		topPanel.setPreferredSize(new Dimension(700, 300));
+		midPanel.setPreferredSize(new Dimension(700, 150));
+		bottomPanel.setPreferredSize(new Dimension(700, 400));
 
 		bottomPanel.setLayout(new GridLayout(1, 4, 10, 0)); // 1 row, 4 columns, with 10px horizontal gap
 		// bottomPanel.setLayout(new GridLayout(1, 4));
@@ -155,9 +157,9 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		JLabel testTube4 = new JLabel(tube04);
 
 		title = new JLabel();
-		title.setText("                                      Template: ");
+		title.setText("");
 		title.setFont(new Font("Arial", Font.BOLD, 18));
-		title.setForeground(Color.GREEN);
+		title.setForeground(Color.WHITE);
 
 		templateDNAlabel = new JLabel();
 		templateDNAlabel.setText("");
@@ -174,7 +176,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		topPanel.add(label3);
 		topPanel.add(label4);
 		topPanel.add(title);
-		topPanel.add(templateDNAlabel);
+		//topPanel.add(templateDNAlabel);
 
 		midPanel.add(testTube1);
 		midPanel.add(testTube2);
@@ -187,6 +189,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		frame.add(bottomPanel, BorderLayout.SOUTH);
 
 		frame.setVisible(true);
+		//frame.pack();
 
 	}
 
@@ -195,6 +198,8 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		if (e.getSource() == enterSeq) {
 
 			templateDNA = input.getText();
+			predictedS = predictedSeq(templateDNA);
+			predictedS = coloringFragments(predictedS);
 
 			panelA.removeAll();
 			panelT.removeAll();
@@ -297,8 +302,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 	        String[] ddTTP = fragmentsT(templateDNA);
 	        String[] ddGTP = fragmentsG(templateDNA);
 	        String[] ddCTP = fragmentsC(templateDNA);
-			GraphWindow graph = new GraphWindow(ddATP, ddTTP, ddGTP, ddCTP);
-			graph.predictedSeq(templateDNA);
+			GraphWindow graph = new GraphWindow(ddATP, ddTTP, ddGTP, ddCTP, predictedS);
 			}
 			catch(NullPointerException exc) {
 				System.out.println("DNA Sequence Empty!!!");
@@ -541,6 +545,25 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 
 		return fragments;
 
+	}
+	public String predictedSeq(String dnaSequence) {
+		int size = dnaSequence.length();
+		StringBuilder pre = new StringBuilder();
+		for(int i = 0; i < size; i++) {
+			
+			if (dnaSequence.charAt(i) == 'T') {
+				pre.append('A');
+			} else if (dnaSequence.charAt(i) == 'A') {
+				pre.append('T');
+			} else if (dnaSequence.charAt(i) == 'G') {
+				pre.append('C');
+			} else if (dnaSequence.charAt(i) == 'C') {
+				pre.append('G');
+			}
+		}
+		String predict = pre.toString();
+		return predict;
+	
 	}
 	
 

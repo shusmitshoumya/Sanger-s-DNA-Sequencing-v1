@@ -28,7 +28,7 @@ public class MainFrame extends JFrame implements ActionListener{
         base.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Window Size
-        base.setSize(1850, 1080);
+        base.setSize(950, 1000);
         base.setResizable(false);;
 
         // Title
