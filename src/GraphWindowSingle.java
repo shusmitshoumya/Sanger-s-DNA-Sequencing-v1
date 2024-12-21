@@ -3,14 +3,14 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.*;
 
-public class GraphWindow{
+public class GraphWindowSingle{
     private Map<String, int[]> data;
     public JLabel predictedLabel;
     public JLabel statement;
     public String predictedString;
     JFrame frame;
 
-    public GraphWindow(String[] ddATP, String[] ddTTP, String[] ddGTP, String[] ddCTP, String predictedString) {
+    public GraphWindowSingle(String[] ddATP, String[] ddTTP, String[] ddGTP, String[] ddCTP, String predictedString) {
     	this.predictedString = predictedString;
         // Prepare data
         data = new HashMap<>();
@@ -23,8 +23,10 @@ public class GraphWindow{
         
         frame = new JFrame();
         frame.setIconImage(image.getImage());
+        
         // Set up the frame
         frame.setTitle("Chromatogram");
+        frame.setResizable(false);
         frame.setSize(800, 900);
         frame.setLayout(new BorderLayout());
         
@@ -98,14 +100,13 @@ public class GraphWindow{
             g2d.drawLine(50, 500, 50, 50);  // Y-axis
 
             // Draw axis labels
-            g2d.drawString("A", 150, 530); // Position of 'A' label
-            g2d.drawString("T", 250, 530); // Position of 'T' label
-            g2d.drawString("G", 350, 530); // Position of 'G' label
-            g2d.drawString("C", 450, 530); // Position of 'C' label
 
+            // g2d.drawString("A", 150, 530);
+            // g2d.drawString("T", 250, 530);
+            // g2d.drawString("G", 350, 530);
+            // g2d.drawString("C", 450, 530);
             g2d.drawString("Length", 10, 60);
 
-            int xA = 150, xT = 250, xG = 350, xC = 450;
            
             Color colorA = new Color(196, 126, 237);
             Color colorT = new Color(113, 231, 235);
@@ -120,31 +121,17 @@ public class GraphWindow{
             colors.put("ddCTP", colorC);
 
             // Plot data points
+            int xSpacing = 100;
             for (Map.Entry<String, int[]> entry : data.entrySet()) {
                 String name = entry.getKey();
                 int[] lengths = entry.getValue();
                 g2d.setColor(colors.get(name));
 
                 for (int i = 0; i < lengths.length; i++) {
-                    int x;
+                    // int x = 50 + (i + 1) * xSpacing;
                     int y = 500 - lengths[i] * 40; 
-                    
-                    if(name.equals("ddATP")){
-                        x = xA;
-                        g2d.fillRect(x - 15, y - 5, 40, 8);
-                    }
-                    else if(name.equals("ddTTP")){
-                        x = xT;
-                        g2d.fillRect(x - 15, y - 5, 40, 8);
-                    }
-                    if(name.equals("ddGTP")){
-                        x = xG;
-                        g2d.fillRect(x - 15, y - 5, 40, 8);
-                    }
-                    if(name.equals("ddCTP")){
-                        x = xC;
-                        g2d.fillRect(x - 15, y - 5, 40, 8);
-                    }
+                    // g2d.fillOval(x - 5, y - 5, 10, 10); 
+                    g2d.fillRect(xSpacing -5, y-5, 40, 8);
                 }
 
                 // Add legend

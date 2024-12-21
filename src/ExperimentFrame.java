@@ -11,6 +11,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 	
 	JButton enterSeq;
 	JButton showGraph;
+	JButton showGraph1;
 	JTextField input;
 	JLabel templateDNAlabel;
 	JLabel title;
@@ -70,11 +71,17 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 			}
 		});
 
-		showGraph = new JButton("Show Graph");
+		showGraph = new JButton("Show Graph(4 Test Tube)");
 		showGraph.setFocusable(false);
 		showGraph.setBackground(Color.GREEN);
 		showGraph.setForeground(new Color(18, 33, 24));
 		showGraph.addActionListener(this);
+
+		showGraph1 = new JButton("Show Graph(Single Test Tube)");
+		showGraph1.setFocusable(false);
+		showGraph1.setBackground(Color.GREEN);
+		showGraph1.setForeground(new Color(18, 33, 24));
+		showGraph1.addActionListener(this);
 
 		// panels
 		JPanel topPanel = new JPanel();
@@ -181,6 +188,7 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 		midPanel.add(testTube3);
 		midPanel.add(testTube4);
 		midPanel.add(showGraph);
+		midPanel.add(showGraph1);
 
 		frame.add(topPanel, BorderLayout.NORTH);
 		frame.add(midPanel, BorderLayout.CENTER);
@@ -307,6 +315,20 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 			}
 			
 		}
+		else if (e.getSource() == showGraph1) {
+			//			System.out.println("Clicked ShowGraph");
+						try {
+						String[] ddATP = fragmentsA(templateDNA);
+						String[] ddTTP = fragmentsT(templateDNA);
+						String[] ddGTP = fragmentsG(templateDNA);
+						String[] ddCTP = fragmentsC(templateDNA);
+						GraphWindowSingle graph1 = new GraphWindowSingle(ddATP, ddTTP, ddGTP, ddCTP, predictedS);
+						}
+						catch(NullPointerException exc) {
+							System.out.println("DNA Sequence Empty!!!");
+						}
+						
+					}
 
 	}
 	public int A = 0;
