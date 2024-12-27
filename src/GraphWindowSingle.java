@@ -29,7 +29,7 @@ public class GraphWindowSingle{
         frame.setIconImage(image.getImage());
         
         // Set up the frame
-        frame.setTitle("Chromatogram");
+        frame.setTitle("Electrophoresis Chromatogram");
         frame.setResizable(false);
         frame.setSize(800, 900);
         frame.setLayout(new BorderLayout());
@@ -58,7 +58,7 @@ public class GraphWindowSingle{
         templateDNALabel.setPreferredSize(new Dimension(frame.getWidth(), 20));
 
         statementPredicted = new JLabel();
-        statementPredicted.setText("Complement DNA sequence found from Gel-Electrophoresis");
+        statementPredicted.setText("Complementary DNA sequence");
         statementPredicted.setFont(new Font("Arial", Font.PLAIN, 18));
         statementPredicted.setForeground(Color.white);
         statementPredicted.setBackground(Color.BLACK); // Add a background color to make it more visible
