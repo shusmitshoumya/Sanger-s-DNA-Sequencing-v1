@@ -6,12 +6,16 @@ import javax.swing.*;
 public class GraphWindow{
     private Map<String, int[]> data;
     public JLabel predictedLabel;
+    public JLabel templateDNALabel;
+    public JLabel statementPredicted;
     public JLabel statement;
     public String predictedString;
+    public String templateDNA;
     JFrame frame;
 
-    public GraphWindow(String[] ddATP, String[] ddTTP, String[] ddGTP, String[] ddCTP, String predictedString) {
+    public GraphWindow(String[] ddATP, String[] ddTTP, String[] ddGTP, String[] ddCTP, String predictedString, String templateDNA) {
     	this.predictedString = predictedString;
+        this.templateDNA = templateDNA;
         // Prepare data
         data = new HashMap<>();
         data.put("ddATP", calculateLengths(ddATP));
@@ -34,16 +38,35 @@ public class GraphWindow{
         predictedLabel = new JLabel();
         
         predictedLabel.setText(predictedString != null ? predictedString : "No prediction available");
-        predictedLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        predictedLabel.setFont(new Font("Arial", Font.PLAIN, 18));
         predictedLabel.setForeground(Color.WHITE);
         predictedLabel.setBackground(Color.BLACK); // Add a background color to make it more visible
         predictedLabel.setOpaque(true); // Required for background color
         predictedLabel.setHorizontalAlignment(SwingConstants.CENTER); // Center align text
-        predictedLabel.setPreferredSize(new Dimension(frame.getWidth(), 100));
+        predictedLabel.setPreferredSize(new Dimension(frame.getWidth(), 20));
+
+        templateDNALabel = new JLabel();
+
+        templateDNALabel.setText(templateDNA);
+        templateDNALabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        templateDNALabel.setForeground(Color.WHITE);
+        templateDNALabel.setBackground(Color.BLACK); // Add a background color to make it more visible
+        templateDNALabel.setOpaque(true); // Required for background color
+        templateDNALabel.setHorizontalAlignment(SwingConstants.CENTER); // Center align text
+        templateDNALabel.setPreferredSize(new Dimension(frame.getWidth(), 20));
         
+        statementPredicted = new JLabel();
+        statementPredicted.setText("Complement DNA sequence found from Gel-Electrophoresis");
+        statementPredicted.setFont(new Font("Arial", Font.PLAIN, 18));
+        statementPredicted.setForeground(Color.white);
+        statementPredicted.setBackground(Color.BLACK); // Add a background color to make it more visible
+        statementPredicted.setOpaque(true); // Required for background color
+        statementPredicted.setHorizontalAlignment(SwingConstants.CENTER); // Center align text
+        statementPredicted.setPreferredSize(new Dimension(frame.getWidth(), 20));
+
         statement = new JLabel();
         statement.setText("Predicted DNA sequence");
-        statement.setFont(new Font("Arial", Font.PLAIN, 20));
+        statement.setFont(new Font("Arial", Font.PLAIN, 18));
         statement.setForeground(Color.white);
         statement.setBackground(Color.BLACK); // Add a background color to make it more visible
         statement.setOpaque(true); // Required for background color
@@ -54,8 +77,16 @@ public class GraphWindow{
         panel.setBackground(Color.black);
         panel.setPreferredSize(new Dimension(frame.getWidth(), 150));
         
-        if(predictedString != null) panel.add(statement);
+        if(predictedString != null) {
+            panel.add(statementPredicted);
+        }
         panel.add(predictedLabel);
+
+        if(templateDNA != null){
+            panel.add(statement);
+        }
+        panel.add(templateDNALabel);
+
         
         
         // Add graph panel

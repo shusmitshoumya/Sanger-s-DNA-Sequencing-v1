@@ -308,10 +308,17 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 	        String[] ddTTP = fragmentsT(templateDNA);
 	        String[] ddGTP = fragmentsG(templateDNA);
 	        String[] ddCTP = fragmentsC(templateDNA);
-			GraphWindow graph = new GraphWindow(ddATP, ddTTP, ddGTP, ddCTP, predictedS);
+			String templateDNAFour = coloringFragments(templateDNA);
+			GraphWindow graph = new GraphWindow(ddATP, ddTTP, ddGTP, ddCTP, predictedS, templateDNAFour);
 			}
 			catch(NullPointerException exc) {
 				System.out.println("DNA Sequence Empty!!!");
+				JOptionPane.showMessageDialog(
+						null,
+						"You must input a DNA sequence to see Electrophoresis Graph",
+						"WARNINGGGGGG",
+						JOptionPane.WARNING_MESSAGE
+				);
 			}
 			
 		}
@@ -322,10 +329,17 @@ public class ExperimentFrame extends JFrame implements ActionListener {
 						String[] ddTTP = fragmentsT(templateDNA);
 						String[] ddGTP = fragmentsG(templateDNA);
 						String[] ddCTP = fragmentsC(templateDNA);
-						GraphWindowSingle graph1 = new GraphWindowSingle(ddATP, ddTTP, ddGTP, ddCTP, predictedS);
+						String templateDNASingle = coloringFragments(templateDNA);
+						GraphWindowSingle graph1 = new GraphWindowSingle(ddATP, ddTTP, ddGTP, ddCTP, predictedS, templateDNASingle);
 						}
 						catch(NullPointerException exc) {
 							System.out.println("DNA Sequence Empty!!!");
+							JOptionPane.showMessageDialog(
+									null,
+									"You must input a DNA sequence to see Electrophoresis Graph",
+									"WARNINGGGGGG",
+									JOptionPane.WARNING_MESSAGE
+							);
 						}
 						
 					}
