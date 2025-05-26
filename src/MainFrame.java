@@ -51,7 +51,7 @@ public class MainFrame extends JFrame implements ActionListener{
         gbc.gridheight = 1;
 
         // Base Frame Label
-        title = new JLabel("DNA Sequencing");
+        title = new JLabel("SeqViz");
         title.setFont(sansSerifBig);
         title.setForeground(Color.white);
         title.setBackground(new Color(27, 27, 51));
